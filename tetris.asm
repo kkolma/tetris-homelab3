@@ -9,7 +9,7 @@
 ; Sorry guys, the comments were written in Hungarian but labels, constants and function names are in English.
 
 
-org 0x4800
+org 0x4100
 
 SCREENMEM:		EQU	0xf800
 ;BUFFER:		EQU	0x6000		;buffer kuka, hl3 nem bírja
@@ -35,6 +35,8 @@ RLOC:			EQU	SCREENMEM + 5*64+32
 KSZ:			EQU 0x00f6		;képszinkront levárja (sic!) :-)
 
 init:
+	out ($ff),a				; <- Memória lapozás / köszi Nickmann Laci
+	ld sp,$40FF
 	call clearScreen
 	call printTitleScreen
 	ld a,0
